@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Crypto arbitrage bot</title>
+    <meta name="description"
+          content="Bot d'arbitrage de cryptomonnaie."/>
+    <meta name="Keywords"
+          content="arbitrage, trading-bot, bitcoin, litecoin, cryptomonnaie, altcoins, ethereum">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <link rel="manifest" href="img/manifest.json">
+    <link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <meta name="msapplication-config" content="images/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+    <style>
+        
+        body {
+            overflow: auto;
+        }
+
+        .loader {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url('img/preloader.gif') 50% 50% no-repeat white;
+        }
+
+        .socket-loader {
+            width: 200px;
+            margin: auto;
+            height: 200px;
+            background: url('img/preloader.gif') 50% 50% no-repeat white;
+
+        }
+    </style>
+
+    <link rel="stylesheet"  type="text/css"  href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css"   href="./css/font-awesome.min.css">
+    
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="fonts/cryptocoins.css">
+    <link rel="stylesheet" href="fonts/cryptocoins-colors.css">
+
+    <link rel="canonical" href="">
+
+</head>
+
+<body>
+
+
+<div class="loader"></div>
+
+
+<a href="#header" id="back-to-top" class="top"><i class="fa fa-chevron-up"></i></a>
+<section id="header" class="header" style="display: none">
+    <div class="top-bar">
+        <div class="container">
+            <div class="navigation" id="navigation-scroll">
+                <div class="row">
+                    <div class="col-md-11 col-xs-10">
+                        <a href="index.html"><span id="logo"><strong class="strong">Bull</strong>Stream</span></a>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="banner-text">
+                            <h2 class="animation-box wow bounceIn animated"><strong class="strong"></strong> Le bot d'arbitrage de cryptomonnaie</h2>
+                            <p>
+                                Toutes les cryptomonnaies et les plus grands marchés d'échange ! 
+                            </p>
+                            <a target="_blank" href=""
+                               class="btn btn-download wow animated fadeInLeft">
+                                <i class="fa fa-user pull-left"></i>
+                                <strong>Se connecter</strong>
+                                <br/> ici</a>
+                            <a target="_blank" href="https://"
+                               class="btn btn-download wow animated fadeInRight">
+                                <i class="fa fa-user-plus pull-left"></i>
+                                <strong>S'enregistrer</strong>
+                                <br/>ici</a>
+                        </div> <!-- /.banner-text -->
+                    </div>
+                   
+                </div>
+            </div><!-- /.row -->
+        </div><!-- /.navigation -->
+    </div><!--/.container-->
+    </div><!--/.top-bar-->
+
+    <div class="container">
+        <div class="starting">
+            <div class="row">
+                
+                
+            </div>
+        </div>
+        <!-- /.starting -->
+    </div>
+    <!-- /.container -->
+</section>
+<!-- /#header -->
+
+<section id="service">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="block-top">
+                    <div class="service-header">
+                        <h1 class="animation-box wow bounceIn animated">Bot de Crypto trading</h1>
+                        <p class="animation-box wow bounceInDown">
+                        </p>
+
+
+                        <div class="socket-loader"></div>
+
+                        <div class="best-pair wow animated fadeIn">
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div><!-- .col-md-12 close -->
+        </div><!-- row close -->
+        <div class="row">
+            <div class="col-md-12 b-bot">
+                <div class="block-bottom">
+                    <div class="service-tab ">
+                        <!-- Nav tabs -->
+                        <div class="left-panel col-md-4 col-xs-12  wow animated fadeInLeft">
+                            <div class="market-names-list col-md-12 col-xs-6">
+                                <h1 id="markets-title">Marchés: <input class="search" id="market-search"></h1>
+                                <ul class="badhon-tab " id="market-list" role="tablist">
+                                    <li class="active">
+                                        <a href="#" aria-controls="home" role="tab" data-toggle="tab">
+                                            <i class="fa fa-check-square-o"></i>Chargement...</a>
+                                    </li>
+                                </ul>
+                                <a class="remove-all" href="javascript:addRemoveAll('markets')">Cocher/décocher</a>
+                            </div>
+
+                            <div class="coin-names-list col-md-12 col-xs-6">
+                                <h1 id="coins-title">Coins: <input class="search" id="coin-search"></h1>
+
+                                <ul id='coin-list' class="badhon-tab" role="tablist">
+                                    <li class="active">
+                                        <a href="#" aria-controls="home" role="tab" data-toggle="tab">
+                                            <i class="fa fa-check-square-o"></i>Chargement...</a>
+                                    </li>
+                                </ul>
+                                <a class="remove-all" href="javascript:addRemoveAll('coins')">Cocher/décocher</a>
+                            </div>
+                        </div>
+
+                        <!-- Tab panes -->
+                        <div class="tab-pane active edit-tab col-md-8 col-xs-12" id="home">
+                            <div class="app-pane">
+                                <h1>PLus hautes différences de prix</h1>
+                                <p>Trouvez ci-dessous les différences de prix les plus lucratives entre les différentes
+                                <br/> plateformes de trading !
+                                    </p>
+                                <p class="loadNumber"> Les <input class="loadNumberInput" placeholder="5"> meilleurs
+                                </p>
+                                <div class="socket-loader"></div>
+                                <ul id="highest"></ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div><!-- .col-md-12 close -->
+        </div><!-- row close -->
+    </div><!-- .container close -->
+</section><!-- #service close -->
+
+
+<script id="coin-list-template" type="text/x-handlebars-template">
+    <li class="active">
+        <a href="javascript:addRemoveCoin('{{coin}}')" aria-controls="home" role="tab" data-toggle="tab">
+            <i class="fa fa-check-square-o" id="check-{{coin}}"> </i> <span>{{coin}} </span> </a>
+    </li>
+</script>
+
+
+<script id="market-list-template" type="text/x-handlebars-template">
+    <li class="active">
+        <a href="javascript:addRemoveMarket('{{market}}')" aria-controls="home" role="tab" data-toggle="tab">
+            <i class="fa fa-check-square-o" id="check-{{market}}"></i> {{market}}</a>
+    </li>
+</script>
+
+<script id="high-template" type="text/x-handlebars-template">
+    <li class="coin-info-high " data-coin="{{coin}}" data-market1="{{market1}}" data-market2="{{market2}}">
+        <h1>Transférer <strong>{{coin}}</strong> de <strong>{{market1}}</strong> vers <strong> {{market2}}</strong> pour un
+            bénéfice de
+            <strong> {{diff}}%</strong></h1>
+        <div class="coin">
+            <i class="cc-{{coin}} {{coin}} cc"> </i>
+            <p class="coin-name">{{coin}}</p>
+            <p class="coin-prices wow animated fadeIn">{{diff}}%</p>
+            <p class="coin-markets">
+                <a>{{market1}}</a>: {{market1price}}<span class="mBTC">mBTC</span>
+                <i class="fa fa-long-arrow-right"></i>
+                <a>{{market2}}</a>: {{market2price}}<span class="mBTC">mBTC</span>
+            </p>
+        </div>
+        <a href="javascript:history('{{coin}}');">Montrer historique</a> <a class="remove" href="#!" onclick="remove(this, 'high')">
+        Retirer cette opportunité </a>
+    </li>
+    <li class="coin-info-low" data-coin="{{pair.coin}}" data-market1="{{pair.market1}}" data-market2="{{pair-market2}}">
+        <h1>vendre pour acheter <strong>{{pair.coin}}</strong> puis retransférer vers <strong> {{pair.market2}}
+            ({{pair.diff}}%)</strong>
+        </h1>
+        <div class="coin">
+            <i class="cc-{{pair.coin}} {{pair.coin}} cc"> </i>
+            <p class="coin-name">{{pair.coin}}</p>
+            <p class="coin-prices">{{pair.diff}}%</p>
+            <p class="coin-markets"><a>{{pair.market1}}</a>: {{pair.market1price}}<span class="mBTC">mBTC</span> <i
+                    class="fa fa-long-arrow-right"></i> <a>{{pair.market2}}</a>: {{pair.market2price}}<span
+                    class="mBTC">mBTC</span>
+            </p>
+        </div>
+        <a href="javascript:history({{pair.coin}}');">Montrer historique</a> <a class="remove" href="#!" onclick="remove(this, 'low')">Retirer
+        cette opportunité</a>
+    </li>
+</script>
+
+<script id="best-template" type="text/x-handlebars-template">
+
+    <h1 class="best-pair-title">Profit total: <strong>{{totalDiff}}%</strong></h1>
+    <div class="coin-info">
+        <div class="coin-info-high">
+            <h1>Transférer <strong>{{coin}}</strong> de <strong>{{market1}}</strong> vers
+                <strong>{{market2}}</strong><strong>
+                    ({{diff}}%)</strong>
+            </h1>
+            <div class="coin">
+                <i class="cc-{{coin}} {{coin}} cc"> </i>
+                <p class="coin-name">{{coin}}</p>
+                <p class="coin-prices">{{diff}}%</p>
+                <p class="coin-markets"><a>{{market1}}</a>: {{market1price}} <i class="fa fa-long-arrow-right"></i> <a>{{market2}}</a>:
+                    {{market2price}}
+                </p>
+            </div>
+        </div>
+        <div class="coin-info-low">
+            <h1>vendre pour acheter <strong>{{pair.coin}}</strong> puis retransférer vers <strong> {{pair.market2}}
+                ({{pair.diff}}%)</strong>
+            </h1>
+            <div class="coin">
+                <i class="cc-{{pair.coin}} {{pair.coin}} cc"> </i>
+                <p class="coin-name">{{pair.coin}}
+                </p>
+                <p class="coin-prices">{{pair.diff}}%</p>
+                <p class="coin-markets"><a>{{pair.market1}}</a>: {{pair.market1price}} <i
+                        class="fa fa-long-arrow-right"></i> <a>{{pair.market2}}</a>: {{pair.market2price}}
+                </p>
+            </div>
+        </div>
+
+    </div>
+    <a href="javascript:history('{{coin}}', '{{pair.coin}}');">Montrer historique</a>
+</script>
+
+
+
+<section id="footer" class="wrapper">
+    <div class="container text-center">
+        <div class="footer-logo">
+            <h1 class="text-center animation-box wow bounceIn animated"><strong>Bull</strong>Stream</h1>
+        </div>
+        <ul class="social-icons text-center">
+            <li class="wow animated fadeInLeft facebook"><a href="https:"><i class="fa fa-facebook"></i></a></li>
+            <li class="wow animated fadeInRight twitter"><a href="#"><i class="fa fa-twitter"></i></a>
+            <li class="wow animated fadeInLeft linkedin"><a href="www.linkedin.com
+"><i class="fa fa-linkedin"></i></a></li>
+            <li class="wow animated fadeInRight googleplus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+            <li class="wow animated fadeInLeft github"><a href=""><i
+                    class="fa fa-github"></i></a>
+        </ul>
+
+        <div class="copyright">
+            <div class="credits">
+                Fait par <a href="https://">Clément Gonon</a>
+            </div>
+            <br>
+            <div>©2018 CLément GONON, Tous droits réservés</div>
+            <div>Donate BTC: </div>
+            <div>Donate ETH: </div>
+            <div>Donate LTC: </div>
+        </div>
+    </div><!-- container -->
+</section>
+
+<script src='https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js'></script>
+<script src='https://threejs.org/examples/js/libs/stats.min.js'></script>
+
+
+<script defer src="js/indexo.js"></script>
+<script defer src="js/jquery-1.11.2.min.js"></script>
+<script defer src="js/handlebars.js"></script>
+<script defer src="js/wow.min.js"></script>
+
+<script defer src="js/socket.io.js"></script>
+<script defer src="js/script.js"></script>
+
+</body>
+</html>
