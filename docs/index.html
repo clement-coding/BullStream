@@ -76,7 +76,7 @@
                         <div class="banner-text">
                             <h2 class="animation-box wow bounceIn animated"><strong class="strong"></strong> Le bot d'arbitrage de cryptomonnaie</h2>
                             <p>
-                                Toutes les cryptomonnaies et les plus grands marchés d'échange ! 
+                                Toutes les cryptomonnaies et les plus grandes plateformes de trading ! 
                             </p>
                             <a target="_blank" href=""
                                class="btn btn-download wow animated fadeInLeft">
@@ -86,7 +86,7 @@
                             <a target="_blank" href="https://"
                                class="btn btn-download wow animated fadeInRight">
                                 <i class="fa fa-user-plus pull-left"></i>
-                                <strong>S'enregistrer</strong>
+                                <strong>S'inscrire</strong>
                                 <br/>ici</a>
                         </div> <!-- /.banner-text -->
                     </div>
@@ -165,7 +165,7 @@
                         <!-- Tab panes -->
                         <div class="tab-pane active edit-tab col-md-8 col-xs-12" id="home">
                             <div class="app-pane">
-                                <h1>PLus hautes différences de prix</h1>
+                                <h1>Les différences de prix les plus lucratives</h1>
                                 <p>Trouvez ci-dessous les différences de prix les plus lucratives entre les différentes
                                 <br/> plateformes de trading !
                                     </p>
@@ -202,7 +202,7 @@
 <script id="high-template" type="text/x-handlebars-template">
     <li class="coin-info-high " data-coin="{{coin}}" data-market1="{{market1}}" data-market2="{{market2}}">
         <h1>Transférer <strong>{{coin}}</strong> de <strong>{{market1}}</strong> vers <strong> {{market2}}</strong> pour un
-            bénéfice de
+            gain de
             <strong> {{diff}}%</strong></h1>
         <div class="coin">
             <i class="cc-{{coin}} {{coin}} cc"> </i>
@@ -215,7 +215,7 @@
             </p>
         </div>
         <a href="javascript:history('{{coin}}');">Montrer historique</a> <a class="remove" href="#!" onclick="remove(this, 'high')">
-        Retirer cette opportunité </a>
+        Retirer </a>
     </li>
     <li class="coin-info-low" data-coin="{{pair.coin}}" data-market1="{{pair.market1}}" data-market2="{{pair-market2}}">
         <h1>vendre pour acheter <strong>{{pair.coin}}</strong> puis retransférer vers <strong> {{pair.market2}}
@@ -231,16 +231,16 @@
             </p>
         </div>
         <a href="javascript:history({{pair.coin}}');">Montrer historique</a> <a class="remove" href="#!" onclick="remove(this, 'low')">Retirer
-        cette opportunité</a>
+        </a>
     </li>
 </script>
 
 <script id="best-template" type="text/x-handlebars-template">
 
-    <h1 class="best-pair-title">Profit total: <strong>{{totalDiff}}%</strong></h1>
+    <h1 class = "best-pair-title-first">Cette opération vous rapporte un</h1><h1 class="best-pair-title"> gain total de : <strong>{{totalDiff}}%</strong></h1>
     <div class="coin-info">
         <div class="coin-info-high">
-            <h1>Transférer <strong>{{coin}}</strong> de <strong>{{market1}}</strong> vers
+            <h1><strong>1.</strong>Transférer <strong>{{coin}}</strong> de <strong>{{market1}}</strong> vers
                 <strong>{{market2}}</strong><strong>
                     ({{diff}}%)</strong>
             </h1>
@@ -254,7 +254,7 @@
             </div>
         </div>
         <div class="coin-info-low">
-            <h1>vendre pour acheter <strong>{{pair.coin}}</strong> puis retransférer vers <strong> {{pair.market2}}
+            <h1><strong>2.</strong>Vendre sur <strong>{{market2}}</strong> pour acheter <strong>{{pair.coin}}</strong> puis retransférer vers <strong> {{pair.market2}}
                 ({{pair.diff}}%)</strong>
             </h1>
             <div class="coin">
@@ -294,7 +294,7 @@
                 Fait par <a href="https://">Clément Gonon</a>
             </div>
             <br>
-            <div>©2018 CLément GONON, Tous droits réservés</div>
+            <div>©2018 Clément GONON, Tous droits réservés</div>
             <div>Donate BTC: </div>
             <div>Donate ETH: </div>
             <div>Donate LTC: </div>
@@ -306,7 +306,7 @@
 <script src='https://threejs.org/examples/js/libs/stats.min.js'></script>
 
 
-<script defer src="js/indexo.js"></script>
+
 <script defer src="js/jquery-1.11.2.min.js"></script>
 <script defer src="js/handlebars.js"></script>
 <script defer src="js/wow.min.js"></script>

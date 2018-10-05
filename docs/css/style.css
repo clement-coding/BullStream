@@ -182,9 +182,16 @@ HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 HH				Header
 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH*/
 .header{
-	height: 70vh;
+	height: 50vh;
 	background: linear-gradient(50deg, rgb(81, 255, 182), rgb(87, 160, 255));
-    background-image: url("../img/graph-design.jpg");
+    background-image: url("../img/bull1.jpg");
+   
+    background-repeat: no-repeat;
+    
+    background-position: right center; 
+   background-color : #6b2bc0 ;
+    
+    
     padding: 45px 0px;
 }
 
@@ -1481,7 +1488,14 @@ a.remove-all {
     justify-content: flex-start;
     align-items: center; /* align vertical */
 }
-
+.best-pair-title-first {
+    display: block;
+    color: #0b9f35;
+    font-size: 15px;
+    /*padding-top: 20px;*/
+    letter-spacing: 3px;
+    margin-bottom: 0;
+}
 .best-pair-title {
     display: block;
     color: #0b9f35;
